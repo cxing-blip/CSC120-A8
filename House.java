@@ -14,6 +14,15 @@ public class House extends Building implements HouseRequirements{
     System.out.println("You have built a house: 🏠");
   }
 
+  public House(String name, String address, int nFloors)
+  {
+    super(name, address, nFloors);
+    this.residents = new ArrayList<Student>();
+    this.hasDiningRoom = false;
+    this.hasElevator = false;
+    System.out.println("You have built a house: 🏠");
+  }
+
   public boolean hasDiningRoom()
   {
     return this.hasDiningRoom;
@@ -30,6 +39,20 @@ public class House extends Building implements HouseRequirements{
       throw new RuntimeException("This resident is already in the house");
     } else {
       residents.add(s);
+    }
+  }
+
+  public void moveIn(Student s, Student s2)
+  {
+    if(isResident(s)) {
+      throw new RuntimeException("This resident is already in the house");
+    } else {
+      residents.add(s);
+    }
+    if(isResident(s2)) {
+      throw new RuntimeException("This resident is already in the house");
+    } else {
+      residents.add(s2);
     }
   }
 
@@ -74,7 +97,7 @@ public class House extends Building implements HouseRequirements{
     House h1 = new House("house1", "east", 3, false, false);
     Student s1 = new Student("lily", "324", 2029);
     Student s2 = new Student("Tom", "324", 2029);
-    h1.moveIn(s1);
+    h1.moveIn(s1, s2);
     System.out.println("nResidents: "+ h1.nResidents());
     System.out.println("Is Lily in the house: "+ h1.isResident(s1));
     System.out.println("Is Tom in the house: "+ h1.isResident(s2));

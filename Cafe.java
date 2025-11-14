@@ -17,6 +17,26 @@ public class Cafe extends Building implements CafeRequirements{
         System.out.println("You have built a cafe: ☕");
     }
 
+    public Cafe(String name, String address, int nFloors, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
+        super(name, address, nFloors);
+        this.nCoffeeOunces = nCoffeeOunces;
+        this.nSugarPackets = nSugarPackets;
+        this.nCreams = nCreams;
+        this.nCups = nCups;
+        this.hasElevator = false;
+        System.out.println("You have built a cafe: ☕");
+    }
+
+    public Cafe(String name, String address, int nFloors, boolean hasElevator) {
+        super(name, address, nFloors);
+        this.nCoffeeOunces = 0;
+        this.nSugarPackets = 0;
+        this.nCreams = 0;
+        this.nCups = 0;
+        this.hasElevator = hasElevator;
+        System.out.println("You have built a cafe: ☕");
+    }
+
     public void sellCoffee(int size, int nSugarPackets, int nCreams)
     {
         if(size<0 || nSugarPackets<0 || nCreams<0)

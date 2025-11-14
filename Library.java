@@ -11,6 +11,13 @@ public class Library extends Building implements LibraryRequirements {
       this.hasElevator = hasElevator;
       System.out.println("You have built a library: 📖");
     }
+
+    public Library(String name, String address, int nFloors) {
+      super(name, address, nFloors);
+      this.collection = new Hashtable<String, Boolean>();
+      this.hasElevator = false;
+      System.out.println("You have built a library: 📖");
+    }
   
     public void addTitle(String title)
     {
@@ -52,6 +59,24 @@ public class Library extends Building implements LibraryRequirements {
         throw new RuntimeException("This book is already returned");
       } else {
         this.collection.replace(title, false, true);
+      }
+    }
+
+    public void returnBook(String title, String title2)
+    {
+      if(!this.collection.containsKey(title)) {
+        throw new RuntimeException("This book is not in the collection");
+      } else if(this.collection.get(title)) {
+        throw new RuntimeException("This book is already returned");
+      } else {
+        this.collection.replace(title, false, true);
+      }
+      if(!this.collection.containsKey(title2)) {
+        throw new RuntimeException("This book is not in the collection");
+      } else if(this.collection.get(title2)) {
+        throw new RuntimeException("This book is already returned");
+      } else {
+        this.collection.replace(title2, false, true);
       }
     }
 
