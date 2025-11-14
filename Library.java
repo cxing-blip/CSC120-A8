@@ -3,10 +3,12 @@ import java.util.Hashtable;
 public class Library extends Building implements LibraryRequirements {
 
   private Hashtable<String, Boolean> collection;
+  private boolean hasElevator;
 
-    public Library(String name, String address, int nFloors) {
+    public Library(String name, String address, int nFloors, boolean hasElevator) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String, Boolean>();
+      this.hasElevator = hasElevator;
       System.out.println("You have built a library: 📖");
     }
   
@@ -77,13 +79,15 @@ public class Library extends Building implements LibraryRequirements {
     }
 
     public static void main(String[] args) {
-      Library l1 = new Library("lib", "east", 2);
+      Library l1 = new Library("lib", "east", 4, true);
       l1.addTitle("book1");
       l1.addTitle("book2");
       l1.printCollection();
       l1.removeTitle("book1");
       l1.printCollection();
       l1.showOptions();
+      l1.enter();
+      l1.goToFloor(2);
     }
   
   }
